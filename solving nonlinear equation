@@ -1,6 +1,7 @@
 #include <iostream>
 #include <math.h>
 #define pi acos(-1)
+#include"string"
 using namespace std;
  
 // Abstract base class
@@ -20,8 +21,35 @@ class EquationSolver
      return y;
     }*/
     
-   double fun(double x)
+    void setfun(string f)
+    {
+      func=f;
+      
+    }
+    double func_1(double x)
    {return (1/x)-tan(x);}
+   
+    double func_2(double x)
+    {return 1/x-pow(2,x);}
+    
+    double func_3(double x)
+    {return 1/(pow(2,x))+exp(x)+2*cos(x)-6;}
+    
+    double func_4(double x)
+    {return (pow(x,3)+4*pow(x,2)+3*x+5)/(2*pow(x,3)-9*pow(x,2)+18*x-2);}
+    
+   double function(double x,string function)
+  {
+    if(function == "func_1") {
+        return func_1(x);
+  } else if(function == "func_2") {
+        return func_2(x);} 
+    else if(function == "func_3"){
+      return func_3(x);}
+    else{
+        return func_4(x);
+    }
+  }
   
 
    void seta(double a)
@@ -33,7 +61,7 @@ class EquationSolver
       RightInterval = b;
    }
    protected:
-   char func;
+   string func;
    double LeftInterval;
    double RightInterval;
 };
@@ -44,7 +72,9 @@ class BisectionMethod: public EquationSolver
    public:
    double Slove()
    {
-      if (fun(LeftInterval)*fun(RightInterval)>=0)
+     double u=function(LeftInterval,func);
+     double v=function(RightInterval,func);
+      if ((u*v)>=0)
       {
          cout << "There are no roots in this interval.";
          return 0;
@@ -54,10 +84,10 @@ class BisectionMethod: public EquationSolver
       while ((RightInterval-LeftInterval)>=0.01)
       {
          h=(LeftInterval+RightInterval)/2;
-         if (fun(h)==0.0)
+         if (function(h,func)==0.0)
          break;
 
-         else if (fun(h)*fun(LeftInterval)<0)
+         else if (function(h,func)*function(LeftInterval,func)<0)
          RightInterval=h;
 
          else
@@ -69,10 +99,45 @@ class BisectionMethod: public EquationSolver
 
 int main(void)
 {
-   BisectionMethod Bis;
-   Bis.seta(0);
-   Bis.setb(pi/2);
-   //Bis.setfun(x*x*x-x*x+2);
-   cout<<"The value of root is:"<<Bis.Slove()<<endl;
+  //Test1
+   BisectionMethod Bis1;
+   Bis1.seta(0);
+   Bis1.setb(pi/2);
+   string a="func_1";
+   Bis1.setfun(a);
+   
+   cout<<"The value of root is:"<<Bis1.Slove()<<endl;
+   
+   
+   //Test2
+   BisectionMethod Bis2;
+   Bis2.seta(0);
+   Bis2.setb(1);
+   string b="func_2";
+   Bis2.setfun(b);
+   
+   cout<<"The value of root is:"<<Bis2.Slove()<<endl;
+   
+   
+   //Test3
+   BisectionMethod Bis3;
+   Bis3.seta(1);
+   Bis3.setb(3);
+   string c="func_3";
+   Bis3.setfun(c);
+   
+   cout<<"The value of root is:"<<Bis3.Slove()<<endl;
+   
+   
+   //Test4
+   BisectionMethod Bis4;
+   Bis4.seta(1);
+   Bis4.setb(3);
+   string d="func_4";
+   Bis4.setfun(d);
+   
+   cout<<"The value of root is:"<<Bis4.Slove()<<endl;
    return 0;
+   
+
 }
