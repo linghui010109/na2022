@@ -1,0 +1,78 @@
+#include <iostream>
+#include <math.h>
+#define pi acos(-1)
+using namespace std;
+ 
+// Abstract base class
+class EquationSolver
+{
+   public:
+   virtual double Slove()=0;
+   
+   /*void setfun(char function)
+   {
+     func=function;
+   }
+   
+   double fun(double )
+   {
+     double y=func;
+     return y;
+    }*/
+    
+   double fun(double x)
+   {return (1/x)-tan(x);}
+  
+
+   void seta(double a)
+   {
+      LeftInterval = a;
+   }
+   void setb(double b)
+   {
+      RightInterval = b;
+   }
+   protected:
+   char func;
+   double LeftInterval;
+   double RightInterval;
+};
+ 
+// Derived class
+class BisectionMethod: public EquationSolver
+{
+   public:
+   double Slove()
+   {
+      if (fun(LeftInterval)*fun(RightInterval)>=0)
+      {
+         cout << "There are no roots in this interval.";
+         return 0;
+      }
+      
+      double h=LeftInterval;
+      while ((RightInterval-LeftInterval)>=0.01)
+      {
+         h=(LeftInterval+RightInterval)/2;
+         if (fun(h)==0.0)
+         break;
+
+         else if (fun(h)*fun(LeftInterval)<0)
+         RightInterval=h;
+
+         else
+         LeftInterval=h;
+      }
+      return h;
+   }
+};
+
+int main(void)
+{
+   BisectionMethod Bis;
+   Bis.seta(0);
+   Bis.setb(pi/2);
+   //Bis.setfun(x*x*x-x*x+2);
+   cout<<"The value of root is:"<<Bis.Slove()<<endl;
+   return 0;
+}
