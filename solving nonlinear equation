@@ -272,7 +272,28 @@ int main(void)
    string j="func_9";
    Bis5.setfun(j);
    
-   cout<<"The depth of water(BisectionMethod) ="<<1-Bis4.Solve()<<endl;
+   cout<<"The depth of water(BisectionMethod)"<<Bis5.Solve()<<endl;
+   
+   //Test2
+   NewtonMethod New3;
+   New3.seta(0);
+   string e="func_9";
+   string f="derivfunc_9";
+   New3.setfun(e,f);
+   
+    cout<<"The depth of water(NewtonMethod) ="<<1-New3.Solve()<<endl;
+    
+    //Test3
+   SecantMethod Sec4;
+   Sec4.seta(0);
+   Sec4.setb(1);
+   string g="func_9";
+   Sec4.setfun(g);
+   
+   cout<<"The depth of water(SecantMethod)"<<1-Sec4.Solve()<<endl;
+   
+   //Question F
+   
    
    return 0;
    
