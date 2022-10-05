@@ -22,7 +22,7 @@ class EquationSlover
       func1=f2;
     }
     
-    double func_1(double x)
+     double func_1(double x)
    {return (1/x)-tan(x);}
    
     double func_2(double x)
@@ -50,10 +50,10 @@ class EquationSlover
     {return pow(x,3)-12*pow(x,2)+3*x+1;}
     
     double func_9(double x)
-    {return 5*pi-10*arcsin(x)-10*h*sqrt(1-pow(x,2))-12.4;}
+    {return 5*pi-10*asin(x)-10*x*sqrt(1-pow(x,2))-12.4;}
     
-   double function(double x,string function)
-  {
+    double function(double x,string function)
+    {
     if(function == "func_1") {
         return func_1(x);
   } else if(function == "func_2") {
@@ -68,6 +68,8 @@ class EquationSlover
         return func_7(x);}
     else if(function == "func_8") {
         return func_8(x);}
+    else if(function == "func_9") {
+        return func_9(x);}
     else if(function == "func_3"){
       return func_3(x);}
     else{
@@ -179,7 +181,7 @@ class SecantMethod: public EquationSlover
 
 int main(void)
 {
-  //Test1
+  //Question B(i)
    BisectionMethod Bis1;
    Bis1.seta(0);
    Bis1.setb(pi/2);
@@ -189,7 +191,7 @@ int main(void)
    cout<<"The value of root is:"<<Bis1.Slove()<<endl;
    
    
-   //Test2
+   //Question B(ii)
    BisectionMethod Bis2;
    Bis2.seta(0);
    Bis2.setb(1);
@@ -199,7 +201,7 @@ int main(void)
    cout<<"The value of root is:"<<Bis2.Slove()<<endl;
    
    
-   //Test3
+   //Question B(iii)
    BisectionMethod Bis3;
    Bis3.seta(1);
    Bis3.setb(3);
@@ -209,7 +211,7 @@ int main(void)
    cout<<"The value of root is:"<<Bis3.Slove()<<endl;
    
    
-   //Test4
+   //Question B(iv)
    BisectionMethod Bis4;
    Bis4.seta(1);
    Bis4.setb(3);
@@ -218,7 +220,7 @@ int main(void)
    
    cout<<"The value of root is:"<<Bis4.Slove()<<endl;
    
-   //Test NewtonMethod
+   //Question C
    NewtonMethod New1;
    New1.seta(4.5);
    New1.setb(7.7);
@@ -228,7 +230,7 @@ int main(void)
    
    cout<<"The value of root is:"<<New1.Slove()<<endl;
    
-   //Test1
+   //Question D(i)
    SecantMethod Sec1;
    Sec1.seta(0);
    Sec1.setb(pi/2);
@@ -237,7 +239,7 @@ int main(void)
    
    cout<<"The value of root is:"<<Sec1.Slove()<<endl;
    
-   //Test2
+   //Question D(ii)
    SecantMethod Sec2;
    Sec2.seta(1);
    Sec2.setb(1.4);
@@ -246,7 +248,7 @@ int main(void)
    
    cout<<"The value of root is:"<<Sec2.Slove()<<endl;
    
-   //Test3
+   //Question D(iii)
    SecantMethod Sec3;
    Sec3.seta(0);
    Sec3.setb(-0.5);
@@ -255,8 +257,16 @@ int main(void)
    
    cout<<"The value of root is:"<<Sec3.Slove()<<endl;
    
+   //Question E
+   BisectionMethod Bis4;
+   Bis4.seta(0);
+   Bis4.setb(1);
+   string a="func_9";
+   Bis4.setfun(a);
    
+   cout<<"The value of root by Bisection Method is:"<<Bis4.Slove()<<endl;
    return 0;
+   
    
 
 }
