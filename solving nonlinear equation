@@ -197,6 +197,35 @@ int main(void)
    New1.setfun(e,f);
    
    cout<<"The value of root is:"<<New1.Slove()<<endl;
+   
+   //Test1
+   SecantMethod Sec1;
+   Sec1.seta(0);
+   Sec1.setb(pi/2);
+   string g="func_6";
+   Sec1.setfun(g);
+   
+   cout<<"The value of root is:"<<Sec1.Slove()<<endl;
+   
+   //Test2
+   SecantMethod Sec2;
+   Sec2.seta(1);
+   Sec2.setb(1.4);
+   string h="func_7";
+   Sec2.setfun(h);
+   
+   cout<<"The value of root is:"<<Sec2.Slove()<<endl;
+   
+   //Test3
+   SecantMethod Sec3;
+   Sec3.seta(0);
+   Sec3.setb(-0.5);
+   string i="func_8";
+   Sec3.setfun(i);
+   
+   cout<<"The value of root is:"<<Sec3.Slove()<<endl;
+   
+   
    return 0;
    
 
