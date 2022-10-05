@@ -5,10 +5,10 @@
 using namespace std;
  
 // Abstract base class
-class EquationSlover
+class EquationSolver
 {
    public:
-   virtual double Slove()=0;
+   virtual double Solve()=0;
     
     void setfun(string f)
     {
@@ -91,10 +91,10 @@ class EquationSlover
    double RightInterval;
 };
 // Derived class
-class BisectionMethod: public EquationSlover
+class BisectionMethod: public EquationSolver
 {
    public:
-   double Slove()
+   double Solve()
    {
      double u=function(LeftInterval,func);
      double v=function(RightInterval,func);
@@ -122,10 +122,10 @@ class BisectionMethod: public EquationSlover
 };
 
 
-class NewtonMethod: public EquationSlover
+class NewtonMethod: public EquationSolver
 {
    public:
-   double Slove()
+   double Solve()
    { int m=50;
      double x0=LeftInterval;
      
@@ -149,10 +149,10 @@ class NewtonMethod: public EquationSlover
 };
 
 
-class SecantMethod: public EquationSlover
+class SecantMethod: public EquationSolver
 {
    public:
-   double Slove()
+   double Solve()
    
    { double x_1=RightInterval;
      double x_0=LeftInterval;
@@ -188,7 +188,7 @@ int main(void)
    string a="func_1";
    Bis1.setfun(a);
    
-   cout<<"The value of root is:"<<Bis1.Slove()<<endl;
+   cout<<"The value of root is:"<<Bis1.Solve()<<endl;
    
    
    //Question B(ii)
@@ -198,7 +198,7 @@ int main(void)
    string b="func_2";
    Bis2.setfun(b);
    
-   cout<<"The value of root is:"<<Bis2.Slove()<<endl;
+   cout<<"The value of root is:"<<Bis2.Solve()<<endl;
    
    
    //Question B(iii)
@@ -208,7 +208,7 @@ int main(void)
    string c="func_3";
    Bis3.setfun(c);
    
-   cout<<"The value of root is:"<<Bis3.Slove()<<endl;
+   cout<<"The value of root is:"<<Bis3.Solve()<<endl;
    
    
    //Question B(iv)
@@ -218,17 +218,24 @@ int main(void)
    string d="func_4";
    Bis4.setfun(d);
    
-   cout<<"The value of root is:"<<Bis4.Slove()<<endl;
+   cout<<"The value of root is:"<<Bis4.Solve()<<endl;
    
    //Question C
    NewtonMethod New1;
    New1.seta(4.5);
-   New1.setb(7.7);
    string e="func_5";
    string f="derivfunc_5";
    New1.setfun(e,f);
    
-   cout<<"The value of root is:"<<New1.Slove()<<endl;
+    cout<<"The value of root is:"<<New1.Solve()<<endl;
+    
+   NewtonMethod New2;
+   New2.seta(7.7);
+   string e="func_5";
+   string f="derivfunc_5";
+   New2.setfun(e,f);
+   
+    cout<<"The value of root is:"<<New2.Solve()<<endl;
    
    //Question D(i)
    SecantMethod Sec1;
@@ -237,7 +244,7 @@ int main(void)
    string g="func_6";
    Sec1.setfun(g);
    
-   cout<<"The value of root is:"<<Sec1.Slove()<<endl;
+   cout<<"The value of root is:"<<Sec1.Solve()<<endl;
    
    //Question D(ii)
    SecantMethod Sec2;
@@ -246,7 +253,7 @@ int main(void)
    string h="func_7";
    Sec2.setfun(h);
    
-   cout<<"The value of root is:"<<Sec2.Slove()<<endl;
+   cout<<"The value of root is:"<<Sec2.Solve()<<endl;
    
    //Question D(iii)
    SecantMethod Sec3;
@@ -255,16 +262,18 @@ int main(void)
    string i="func_8";
    Sec3.setfun(i);
    
-   cout<<"The value of root is:"<<Sec3.Slove()<<endl;
+   cout<<"The value of root is:"<<Sec3.Solve()<<endl;
    
    //Question E
-   BisectionMethod Bis4;
-   Bis4.seta(0);
-   Bis4.setb(1);
-   string a="func_9";
-   Bis4.setfun(a);
+   //Test1
+   BisectionMethod Bis5;
+   Bis5.seta(0);
+   Bis5.setb(1);
+   string j="func_9";
+   Bis5.setfun(j);
    
-   cout<<"The value of root by Bisection Method is:"<<Bis4.Slove()<<endl;
+   cout<<"The depth of water(BisectionMethod) ="<<1-Bis4.Solve()<<endl;
+   
    return 0;
    
    
