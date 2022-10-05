@@ -22,7 +22,38 @@ class EquationSlover
       func1=f2;
     }
     
-    {
+    double func_1(double x)
+   {return (1/x)-tan(x);}
+   
+    double func_2(double x)
+    {return 1/x-pow(2,x);}
+    
+    double func_3(double x)
+    {return 1/(pow(2,x))+exp(x)+2*cos(x)-6;}
+    
+    double func_4(double x)
+    {return (pow(x,3)+4*pow(x,2)+3*x+5)/(2*pow(x,3)-9*pow(x,2)+18*x-2);}
+    
+    double func_5(double x)
+    {return x-tan(x);}
+    
+    double derivfunc_5(double x)
+    {return 1-pow(1/cos(x),2);}
+    
+    double func_6(double x)
+    {return sin(x/2)-1;}
+    
+    double func_7(double x)
+    {return exp(x)-tan(x);}
+    
+    double func_8(double x)
+    {return pow(x,3)-12*pow(x,2)+3*x+1;}
+    
+    double func_9(double x)
+    {return 5*pi-10*arcsin(x)-10*h*sqrt(1-pow(x,2))-12.4;}
+    
+   double function(double x,string function)
+  {
     if(function == "func_1") {
         return func_1(x);
   } else if(function == "func_2") {
@@ -57,7 +88,6 @@ class EquationSlover
    double LeftInterval;
    double RightInterval;
 };
- 
 // Derived class
 class BisectionMethod: public EquationSlover
 {
