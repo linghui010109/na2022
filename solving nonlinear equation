@@ -5,27 +5,23 @@
 using namespace std;
  
 // Abstract base class
-class EquationSolver
+class EquationSlover
 {
    public:
    virtual double Slove()=0;
-   
-   /*void setfun(char function)
-   {
-     func=function;
-   }
-   
-   double fun(double )
-   {
-     double y=func;
-     return y;
-    }*/
     
     void setfun(string f)
     {
       func=f;
       
     }
+    
+    void setfun(string f1,string f2)
+    {
+      func=f1;
+      func1=f2;
+    }
+    
     double func_1(double x)
    {return (1/x)-tan(x);}
    
@@ -38,20 +34,28 @@ class EquationSolver
     double func_4(double x)
     {return (pow(x,3)+4*pow(x,2)+3*x+5)/(2*pow(x,3)-9*pow(x,2)+18*x-2);}
     
+    double func_5(double x)
+    {return x-tan(x);}
+    
+    double derivfunc_5(double x)
+    {return 1-pow(1/cos(x),2);}
+    
    double function(double x,string function)
   {
     if(function == "func_1") {
         return func_1(x);
   } else if(function == "func_2") {
         return func_2(x);} 
+    else if(function == "func_5") {
+        return func_5(x);}
+    else if(function == "derivfunc_5") {
+        return derivfunc_5(x);}
     else if(function == "func_3"){
       return func_3(x);}
     else{
         return func_4(x);
     }
   }
-  
-
    void seta(double a)
    {
       LeftInterval = a;
@@ -62,12 +66,13 @@ class EquationSolver
    }
    protected:
    string func;
+   string func1;
    double LeftInterval;
    double RightInterval;
 };
  
 // Derived class
-class BisectionMethod: public EquationSolver
+class BisectionMethod: public EquationSlover
 {
    public:
    double Slove()
@@ -96,6 +101,35 @@ class BisectionMethod: public EquationSolver
       return h;
    }
 };
+
+class NewtonMethod: public EquationSlover
+{
+   public:
+   double Slove()
+   { int m=50;
+     double x0=LeftInterval;
+     
+     for(int i=0;i<=m;i++) 
+     {
+       double u=function(x0,func);
+       if(abs(u)<0.01)
+       {break;}
+       else if(x0>RightInterval)
+       {
+       cout << "There is no root in this interval."<<endl;
+       }
+       else{
+         double h=function(x0,func)/function(x0,func1);
+         double x1=x0-h;
+         x0=x1;
+       }
+     }
+     return x0;
+    }
+};
+
+
+
 
 int main(void)
 {
@@ -137,6 +171,16 @@ int main(void)
    Bis4.setfun(d);
    
    cout<<"The value of root is:"<<Bis4.Slove()<<endl;
+   
+   //Test NewtonMethod
+   NewtonMethod New1;
+   New1.seta(4.5);
+   New1.setb(7.7);
+   string e="func_5";
+   string f="derivfunc_5";
+   New1.setfun(e,f);
+   
+   cout<<"The value of root is:"<<New1.Slove()<<endl;
    return 0;
    
 
