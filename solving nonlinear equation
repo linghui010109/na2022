@@ -22,26 +22,7 @@ class EquationSlover
       func1=f2;
     }
     
-    double func_1(double x)
-   {return (1/x)-tan(x);}
-   
-    double func_2(double x)
-    {return 1/x-pow(2,x);}
-    
-    double func_3(double x)
-    {return 1/(pow(2,x))+exp(x)+2*cos(x)-6;}
-    
-    double func_4(double x)
-    {return (pow(x,3)+4*pow(x,2)+3*x+5)/(2*pow(x,3)-9*pow(x,2)+18*x-2);}
-    
-    double func_5(double x)
-    {return x-tan(x);}
-    
-    double derivfunc_5(double x)
-    {return 1-pow(1/cos(x),2);}
-    
-   double function(double x,string function)
-  {
+    {
     if(function == "func_1") {
         return func_1(x);
   } else if(function == "func_2") {
@@ -50,6 +31,12 @@ class EquationSlover
         return func_5(x);}
     else if(function == "derivfunc_5") {
         return derivfunc_5(x);}
+    else if(function == "func_6") {
+        return func_6(x);}
+    else if(function == "func_7") {
+        return func_7(x);}
+    else if(function == "func_8") {
+        return func_8(x);}
     else if(function == "func_3"){
       return func_3(x);}
     else{
@@ -102,6 +89,7 @@ class BisectionMethod: public EquationSlover
    }
 };
 
+
 class NewtonMethod: public EquationSlover
 {
    public:
@@ -129,6 +117,34 @@ class NewtonMethod: public EquationSlover
 };
 
 
+class SecantMethod: public EquationSlover
+{
+   public:
+   double Slove()
+   
+   { double x_1=RightInterval;
+     double x_0=LeftInterval;
+     double u=function(x_1,func);
+     double v=function(x_0,func);
+     for(int i=2;i<=50;i++)
+     {
+       if (abs(u)>abs(v))
+       {
+         swap(x_1,x_0);
+         swap(u,v);
+        }
+        double s=((x_1)-(x_0))/(u-v);
+        x_0=x_1;
+        v=u;
+        x_1=x_1-u*s;
+        u=function(x_1,func);
+        if(abs((x_1)-(x_0))<0.01||abs(u)<0.01)
+        {break;}
+     }
+    return x_1;
+    }
+    
+};
 
 
 int main(void)
