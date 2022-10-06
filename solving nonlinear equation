@@ -273,8 +273,8 @@ int main(void)
    //Test2
    NewtonMethod New3;
    New3.seta(0);
-   string e="func_9";
-   string f="derivfunc_9";
+   string k="func_9";
+   string l="derivfunc_9";
    New3.setfun(e,f);
    
     cout<<"The depth of water(NewtonMethod) ="<<1-New3.Solve()<<endl;
@@ -283,7 +283,7 @@ int main(void)
    SecantMethod Sec4;
    Sec4.seta(0);
    Sec4.setb(1);
-   string g="func_9";
+   string m="func_9";
    Sec4.setfun(g);
    
    cout<<"The depth of water(SecantMethod)"<<1-Sec4.Solve()<<endl;
