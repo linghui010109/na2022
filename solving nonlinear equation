@@ -21,8 +21,14 @@ class EquationSolver
       func=f1;
       func1=f2;
     }
-    
-     double func_1(double x)
+    void setnum(double l,double h,double D,double B1){
+      cin>>l>>h>>D>>B1;
+       A=l*sin(B1);
+       B=l*cos(B1);
+       C=(h+0.5D)*sin(B1)-0.5*D*tan(B1);
+       E=(h+0.5*D)*cos(B1)-0.5*D;}
+       
+    double func_1(double x)
    {return (1/x)-tan(x);}
    
     double func_2(double x)
@@ -55,17 +61,12 @@ class EquationSolver
     double derivfunc_9(double x)
     {return (-10/sqrt(1-pow(x,2)))-10*sqrt(1-pow(x,2))+(10*pow(x,2))/sqrt(1-pow(x,2));}
     
-    /*double func_10(double x)
-    { double l,h,D,B1;
-      double A=lsin(B1);
-      double B=lcos(B1);
-      double C=(h+0.5D)*sin(B1)-0.5*D*tan(B1);
-      double E=(h+0.5*D)*cos(B1)-0.5*D;
-      return A*sin(x)*cos(x)+B*pow(sin(x),2)-C*cos(x)-E*sin(x);}*/
+    double func_10(double x)
+    { return A*sin(x)*cos(x)+B*pow(sin(x),2)-C*cos(x)-E*sin(x);}
       
-    void setnum(double l,h,D,B1){
-      cout<<Please input l,l,D,B1<,}
-      
+    double derivfunc_10(double x)
+    {return A*pow(cos(x),2)-A*pow(sin(x),2)+2*B*sin(x)*cos(x)+C*sin(x)-E*cos(x);}
+     
     double function(double x,string function)
     {
     if(function == "func_1") {
@@ -86,6 +87,12 @@ class EquationSolver
         return func_9(x);}
     else if(function == "derivfunc_9")
     {return derivfunc_9(x);}
+    else if(function == "func_10") {
+        return func_10(x);}
+     else if(function == "derivfunc_10")
+    {return derivfunc_10(x);}
+        
+ 
     else if(function == "func_3"){
       return func_3(x);}
     else{
@@ -105,7 +112,12 @@ class EquationSolver
    string func1;
    double LeftInterval;
    double RightInterval;
-};
+   double A;
+   double B;
+   double C;
+   double E;
+   };
+   
 // Derived class
 class BisectionMethod: public EquationSolver
 {
@@ -284,7 +296,7 @@ int main(void)
    string j="func_9";
    Bis5.setfun(j);
    
-   cout<<"E.The depth of water(BisectionMethod)"<<1-Bis5.Solve()<<endl;
+   cout<<"E.The depth of water(BisectionMethod) ="<<1-Bis5.Solve()<<endl;
    
    //Test2
    NewtonMethod New3;
@@ -302,13 +314,38 @@ int main(void)
    string m="func_9";
    Sec4.setfun(m);
    
-   cout<<"E.The depth of water(SecantMethod)"<<1-Sec4.Solve()<<endl;
+   cout<<"E.The depth of water(SecantMethod) ="<<1-Sec4.Solve()<<endl;
    
-   //Question F
+    //Question F(a)
+   NewtonMethod New4;
+   New4.setnum(80,49,55,11.5);
+   New4.seta(30);
+   string o="func_10";
+   string n="derivfunc_10";
+   New4.setfun(o,n);
    
+    cout<<"F(a).The value a is:"<<New4.Solve()<<endl;
+	
+	//Question F(b)
+   NewtonMethod New5;
+   New5.setnum(80,49,30,11.5);
+   New5.seta(33);
+   string p="func_10";
+   string q="derivfunc_10";
+   New5.setfun(p,q);
+
+   cout<<"F(b).The value a is:"<<New5.Solve()<<endl;
+	
+   //Question F(c)
+   SecantMethod Sec5;
+   Sec5.setnum(80,49,55,11.5);
+   Sec5.seta(0);
+   Sec5.setb(50);
+   string r="func_10";
+   Sec5.setfun(r);
+   cout<<"F(c).The value a is:"<<Sec5.Solve()<<endl;
    
    return 0;
    
-   
-
+  
 }
