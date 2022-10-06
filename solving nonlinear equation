@@ -166,7 +166,7 @@ class SecantMethod: public EquationSolver
         v=u;
         x_1=x_1-u*s;
         u=function(x_1,func);
-        if(abs((x_1)-(x_0))<0.01||abs(u)<0.01)
+        if(abs((x_1)-(x_0))<0.00001||abs(u)<0.00001)
         {break;}
      }
     return x_1;
