@@ -134,10 +134,6 @@ class NewtonMethod: public EquationSolver
        double u=function(x0,func);
        if(abs(u)<0.01)
        {break;}
-       else if(x0>RightInterval)
-       {
-       cout << "There is no root in this interval."<<endl;
-       }
        else{
          double h=function(x0,func)/function(x0,func1);
          double x1=x0-h;
@@ -231,8 +227,8 @@ int main(void)
     
    NewtonMethod New2;
    New2.seta(7.7);
-   string e="func_5";
-   string f="derivfunc_5";
+   string w="func_5";
+   string u="derivfunc_5";
    New2.setfun(e,f);
    
     cout<<"The value of root is:"<<New2.Solve()<<endl;
