@@ -53,7 +53,7 @@ class EquationSolver
     {return 5*pi-10*asin(x)-10*x*sqrt(1-pow(x,2))-12.4;}
     
     double derivfunc_9(double x)
-    {return (10/sqrt(1-pow(x,2)))+10*sqrt(1-pow(x,2))+(10*pow(x,2))/sqrt(1-pow(x,2));}
+    {return (-10/sqrt(1-pow(x,2)))-10*sqrt(1-pow(x,2))+(10*pow(x,2))/sqrt(1-pow(x,2));}
     
     /*double func_10(double x)
     { double l,h,D,B1;
