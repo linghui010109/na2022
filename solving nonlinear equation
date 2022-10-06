@@ -52,6 +52,9 @@ class EquationSolver
     double func_9(double x)
     {return 5*pi-10*asin(x)-10*x*sqrt(1-pow(x,2))-12.4;}
     
+    double derivfunc_9(double x)
+    {return (10/sqrt(1-pow(x,2)))-10*sqrt(1-pow(x,2))+(20*pow(x,2))/sqrt(1-pow(x,2));}
+    
     double function(double x,string function)
     {
     if(function == "func_1") {
@@ -70,6 +73,8 @@ class EquationSolver
         return func_8(x);}
     else if(function == "func_9") {
         return func_9(x);}
+    else if(function == "derivfunc_9")
+    {return derivfunc_9(x);}
     else if(function == "func_3"){
       return func_3(x);}
     else{
