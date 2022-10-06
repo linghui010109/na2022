@@ -53,8 +53,19 @@ class EquationSolver
     {return 5*pi-10*asin(x)-10*x*sqrt(1-pow(x,2))-12.4;}
     
     double derivfunc_9(double x)
-    {return (10/sqrt(1-pow(x,2)))-10*sqrt(1-pow(x,2))+(20*pow(x,2))/sqrt(1-pow(x,2));}
+    {return (10/sqrt(1-pow(x,2)))+10*sqrt(1-pow(x,2))+(10*pow(x,2))/sqrt(1-pow(x,2));}
     
+    /*double func_10(double x)
+    { double l,h,D,B1;
+      double A=lsin(B1);
+      double B=lcos(B1);
+      double C=(h+0.5D)*sin(B1)-0.5*D*tan(B1);
+      double E=(h+0.5*D)*cos(B1)-0.5*D;
+      return A*sin(x)*cos(x)+B*pow(sin(x),2)-C*cos(x)-E*sin(x);}*/
+      
+    void setnum(double l,h,D,B1){
+      cout<<Please input l,l,D,B1<,}
+      
     double function(double x,string function)
     {
     if(function == "func_1") {
@@ -110,7 +121,7 @@ class BisectionMethod: public EquationSolver
       }
       
       double h=LeftInterval;
-      while ((RightInterval-LeftInterval)>=0.01)
+      while ((RightInterval-LeftInterval)>=0.0001)
       {
          h=(LeftInterval+RightInterval)/2;
          if (function(h,func)==0.0)
@@ -137,7 +148,7 @@ class NewtonMethod: public EquationSolver
      for(int i=0;i<=m;i++) 
      {
        double u=function(x0,func);
-       if(abs(u)<0.01)
+       if(abs(u)<0.001)
        {break;}
        else{
          double h=function(x0,func)/function(x0,func1);
@@ -189,7 +200,7 @@ int main(void)
    string a="func_1";
    Bis1.setfun(a);
    
-   cout<<"The value of root is:"<<Bis1.Solve()<<endl;
+   cout<<"B(i).The value of root is:"<<Bis1.Solve()<<endl;
    
    
    //Question B(ii)
@@ -199,7 +210,7 @@ int main(void)
    string b="func_2";
    Bis2.setfun(b);
    
-   cout<<"The value of root is:"<<Bis2.Solve()<<endl;
+   cout<<"B(ii).The value of root is:"<<Bis2.Solve()<<endl;
    
    
    //Question B(iii)
@@ -209,7 +220,7 @@ int main(void)
    string c="func_3";
    Bis3.setfun(c);
    
-   cout<<"The value of root is:"<<Bis3.Solve()<<endl;
+   cout<<"B(iii).The value of root is:"<<Bis3.Solve()<<endl;
    
    
    //Question B(iv)
@@ -219,7 +230,7 @@ int main(void)
    string d="func_4";
    Bis4.setfun(d);
    
-   cout<<"The value of root is:"<<Bis4.Solve()<<endl;
+   cout<<"B(iv).The value of root is:"<<Bis4.Solve()<<endl;
    
    //Question C
    NewtonMethod New1;
@@ -228,15 +239,15 @@ int main(void)
    string f="derivfunc_5";
    New1.setfun(e,f);
    
-    cout<<"The value of root is:"<<New1.Solve()<<endl;
+    cout<<"C(i).The value of root is:"<<New1.Solve()<<endl;
     
    NewtonMethod New2;
    New2.seta(7.7);
    string w="func_5";
    string u="derivfunc_5";
-   New2.setfun(e,f);
+   New2.setfun(w,u);
    
-    cout<<"The value of root is:"<<New2.Solve()<<endl;
+    cout<<"C(ii).The value of root is:"<<New2.Solve()<<endl;
    
    //Question D(i)
    SecantMethod Sec1;
@@ -245,7 +256,7 @@ int main(void)
    string g="func_6";
    Sec1.setfun(g);
    
-   cout<<"The value of root is:"<<Sec1.Solve()<<endl;
+   cout<<"D(i).The value of root is:"<<Sec1.Solve()<<endl;
    
    //Question D(ii)
    SecantMethod Sec2;
@@ -254,7 +265,7 @@ int main(void)
    string h="func_7";
    Sec2.setfun(h);
    
-   cout<<"The value of root is:"<<Sec2.Solve()<<endl;
+   cout<<"D(ii).The value of root is:"<<Sec2.Solve()<<endl;
    
    //Question D(iii)
    SecantMethod Sec3;
@@ -263,7 +274,7 @@ int main(void)
    string i="func_8";
    Sec3.setfun(i);
    
-   cout<<"The value of root is:"<<Sec3.Solve()<<endl;
+   cout<<"D(iii).The value of root is:"<<Sec3.Solve()<<endl;
    
    //Question E
    //Test1
@@ -273,25 +284,25 @@ int main(void)
    string j="func_9";
    Bis5.setfun(j);
    
-   cout<<"The depth of water(BisectionMethod)"<<Bis5.Solve()<<endl;
+   cout<<"E.The depth of water(BisectionMethod)"<<1-Bis5.Solve()<<endl;
    
    //Test2
    NewtonMethod New3;
    New3.seta(0);
    string k="func_9";
    string l="derivfunc_9";
-   New3.setfun(e,f);
+   New3.setfun(k,l);
    
-    cout<<"The depth of water(NewtonMethod) ="<<1-New3.Solve()<<endl;
+    cout<<"E.The depth of water(NewtonMethod) ="<<1-New3.Solve()<<endl;
     
     //Test3
    SecantMethod Sec4;
    Sec4.seta(0);
    Sec4.setb(1);
    string m="func_9";
-   Sec4.setfun(g);
+   Sec4.setfun(m);
    
-   cout<<"The depth of water(SecantMethod)"<<1-Sec4.Solve()<<endl;
+   cout<<"E.The depth of water(SecantMethod)"<<1-Sec4.Solve()<<endl;
    
    //Question F
    
