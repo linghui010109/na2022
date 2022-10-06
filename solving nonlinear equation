@@ -213,8 +213,8 @@ int main(void)
    
    //Question B(iv)
    BisectionMethod Bis4;
-   Bis4.seta(1);
-   Bis4.setb(3);
+   Bis4.seta(0);
+   Bis4.setb(4);
    string d="func_4";
    Bis4.setfun(d);
    
