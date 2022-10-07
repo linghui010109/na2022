@@ -1,3 +1,9 @@
+#include <iostream>
+#include <math.h>
+#define pi acos(-1)
+#include"string"
+#include"NonlinearEquationSolving.h"
+using namespace std;
 
 int main(void)
 {
