@@ -1,0 +1,12 @@
+function[a,s]=dsl_via_QR(x,y)
+[~,col]=size(x);
+A=zeros(col,3);
+A(:,1)=ones(col,1);
+A(:,2)=x';
+A(:,3)=(x.*x)';
+[Q,R]=qr(A);
+R=R(1:3,1:3);
+c=Q'*y';
+c=c(1:3);
+a=inv(R)*c;
+s=cond(R,2);
