@@ -9,10 +9,10 @@
 4.getcoeff(vector<double> &value,MatrixXf &M, vector<double>& x, vector<double>& y)：返回拟合函数的值。  
 5.Function：用来管理函数以及关于函数一阶微分与二阶微分的定义。  
 
-##### Bsline
-1.B_Spline_c(vector<double> &x,Function &func,vector<double> val, const string& type_name):x为插值节点，func为函数，val为输入值，type_name为函数的类型，分别有complete cubic cardinal以及complete quadratic cardinal。
-2.B(int i, int n, double val)：cardinal的基函数。
-3.B_Spline_n（double val, vector<double>& t, Function& func, const string& type_name, const double ii）：val为输入值，t为插值节点，func为函数，type_name为函数类型，分别为linear，conplete以及natural。（但我来不及完成，只完成一半）
+##### Bspline
+1.B_Spline_c(vector<double> &x,Function &func,vector<double> val, const string& type_name):x为插值节点，func为函数，val为输入值，type_name为函数的类型，分别有complete cubic cardinal以及complete quadratic cardinal。  
+2.B(int i, int n, double val)：cardinal的基函数。  
+3.B_Spline_n（double val, vector<double>& t, Function& func, const string& type_name, const double ii）：val为输入值，t为插值节点，func为函数，type_name为函数类型，分别为linear，conplete以及natural。（但我来不及完成，只完成一半）  
   
  
 ### -测试过程
